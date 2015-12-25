@@ -1,6 +1,7 @@
 #ifndef PIXELDISPLAY_H
 #define PIXELDISPLAY_H
 
+#include <stdint.h>
 #include <QWidget>
 #include <QFrame>
 #include <qimage.h>

@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QMenuSim
 TEMPLATE = app
@@ -15,57 +16,62 @@ INCLUDEPATH += ../common/
 INCLUDEPATH += ../../source/guiWidgets/
 INCLUDEPATH += ../../source/guiCore/
 INCLUDEPATH += ../../source/guiGraphics/
+INCLUDEPATH += ../../source/guiGraphLib/
 
 
 SOURCES += main.cpp\
-		mainwindow.cpp \
+        mainwindow.cpp \
+        gui_top/guiTop.c \
+        gui_top/guiMainForm.c \
+        gui_top/guiPanel1.c \
+        gui_top/guiPanel2.c \
 	../common/pixeldisplay.cpp \
-    gui_top/guiTop.c \
-	../../source/guiGraphics/guiGraphPrimitives.c \
-	../../source/guiGraphics/guiGraphWidgets.c \
-	../../source/guiGraphics/font_h12.c \
-	../../source/guiGraphics/guiGraphHAL.c \
+        ../../source/guiCore/guiCore.c \
+        ../../source/guiCore/guiCoreTimers.c \
+        ../../source/guiCore/guiCoreMemory.c \
+        ../../source/guiWidgets/guiButton.c \
+        ../../source/guiWidgets/guiRadioButton.c \
+        ../../source/guiWidgets/guiPanel.c \
 	../../source/guiWidgets/guiTextLabel.c \
 	../../source/guiWidgets/guiCheckBox.c \
-	../../source/guiCore/guiCore.c \
-    ../../source/guiGraphics/font_h32.c \
-    ../../source/guiGraphics/font_h10_bold.c \
-    ../../source/guiGraphics/font_h10.c \
-    ../../source/guiGraphics/font_6x8_mono.c \
-    ../../source/guiGraphics/widget_images.c \
-    gui_top/guiMainForm.c \
-    ../../source/guiWidgets/guiButton.c \
-    ../../source/guiWidgets/guiPanel.c \
-    gui_top/guiPanel1.c \
-    gui_top/guiPanel2.c \
-    ../../source/guiWidgets/guiRadioButton.c \
-    ../../source/guiCore/guiCoreTimers.c \
-    ../../source/guiCore/guiCoreMemory.c
+        ../../source/guiGraphics/guiGraphWidgets.c \
+        ../../source/guiGraphics/guiGraphImages.c \
+        ../../source/guiGraphLib/lcd_lib.c \
+        ../../source/guiGraphLib/lcd_lib_font.c \
+        ../../source/guiGraphLib/lcd_lib_graph.c \
+        ../../source/guiGraphLib/lcd_font_h32.c \
+        ../../source/guiGraphLib/lcd_font_h12.c \
+        ../../source/guiGraphLib/lcd_font_h10_bold.c \
+        ../../source/guiGraphLib/lcd_font_h10.c \
+        ../../source/guiGraphLib/lcd_font_6x8_mono.c
+
 
 HEADERS  += mainwindow.h \
-    ../common/pixeldisplay.h \
-    gui_top/guiTop.h \
-	../../source/guiGraphics/guiGraphPrimitives.h \
-	../../source/guiGraphics/guiGraphWidgets.h \
-	../../source/guiGraphics/guiFonts.h \
-	../../source/guiGraphics/guiGraphHAL.h \
-	../../source/guiGraphics/guiImages.h \
+        gui_top/guiTop.h \
+        gui_top/guiMainForm.h \
+        gui_top/guiPanel1.h \
+        gui_top/guiPanel2.h \
+        gui_top/guiConfig.h \
+        gui_top/lcd_lib_config.h \
+        ../common/pixeldisplay.h \
+        ../../source/guiCore/guiCore.h \
+        ../../source/guiCore/guiCoreMemory.h \
+        ../../source/guiCore/guiEvents.h \
+        ../../source/guiCore/guiCoreTimers.h \
+        ../../source/guiCore/guiWidgets.h \
+        ../../source/guiWidgets/guiButton.h \
+        ../../source/guiWidgets/guiRadioButton.h \
+        ../../source/guiWidgets/guiPanel.h \
 	../../source/guiWidgets/guiTextLabel.h \
 	../../source/guiWidgets/guiCheckBox.h \
-	../../source/guiCore/guiEvents.h \
-	../../source/guiCore/guiCore.h \
-    gui_top/guiMainForm.h \
-    ../../source/guiWidgets/guiButton.h \
-    ../../source/guiWidgets/guiPanel.h \
-    gui_top/guiPanel1.h \
-    gui_top/guiPanel2.h \
-    ../../source/guiWidgets/guiRadioButton.h \
-    gui_top/guiConfig.h \
-    ../../source/guiCore/guiWidgets.h \
-    ../../source/guiCore/guiCoreTimers.h \
-    ../../source/guiCore/guiCoreMemory.h
-	
+        ../../source/guiGraphics/guiGraphWidgets.h \
+        ../../source/guiGraphics/guiGraphImages.h \
+        ../../source/guiGraphLib/guiGraphLib.h \
+        ../../source/guiGraphLib/lcd_lib.h \
+        ../../source/guiGraphLib/lcd_lib_private.h \
+        ../../source/guiGraphLib/lcd_font_typedef.h
 
+	
 
 FORMS    += mainwindow.ui
 

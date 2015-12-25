@@ -114,7 +114,7 @@ uint8_t guiPanel_ProcessEvent(guiGenericWidget_t *widget, guiEvent_t event)
     switch(event.type)
     {
         case GUI_EVENT_DRAW:
-            guiGraph_DrawPanel(z);
+            guiGraph_DrawPanel(panel);
             // Call handler
             guiCore_CallHandler(panel, WIDGET_ON_DRAW_EVENT, &event);
             // Reset flags - redrawForced will be reset by core

@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 #include "guiTop.h"
-#include "guiFonts.h"
-#include "guiGraphHAL.h"
-#include "guiGraphPrimitives.h"
+#include "guiGraphLib.h"
 #include "guiGraphWidgets.h"
 
 #include "guiCore.h"
@@ -24,7 +22,7 @@ uint8_t timeHours;
 uint8_t timeMinutes;
 uint8_t timeSeconds;
 
-
+uint32_t guiLcdBuffer[LCD_XSIZE * LCD_YSIZE];
 
 
 //-----------------------------------//

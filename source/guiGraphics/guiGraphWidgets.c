@@ -6,11 +6,9 @@
 **********************************************************/
 
 #include <stdint.h>
-#include "guiGraphHAL.h"
-#include "guiGraphPrimitives.h"
 #include "guiGraphWidgets.h"
-#include "guiFonts.h"
-#include "guiImages.h"
+#include "guiGraphLib.h"
+#include "guiGraphImages.h"
 #include "guiWidgets.h"
 
 
@@ -20,6 +18,7 @@ int16_t wy;
 
 const color_t colorPalette1[COLOR_PALETTE_SIZE] = {
 
+#if 1
     //  WIN32 boring grey style
     colorFromRgb(210,210,210),      // COLOR_INDEX_WIDGET_BACKGROUND
     colorFromRgb(220,220,220),      // COLOR_INDEX_BUTTON_BACKGROUND
@@ -29,7 +28,7 @@ const color_t colorPalette1[COLOR_PALETTE_SIZE] = {
     colorFromRgb(150,150,150),      // COLOR_INDEX_3DFRAME_DARK2
     colorFromRgb(0,0,0),            // COLOR_INDEX_FOCUS_FRAME
     colorFromRgb(0,0,0),            // COLOR_INDEX_TEXT_ACTIVE
-/*
+#else
     // Dark-orange
     colorFromRgb(0,0,0),            // COLOR_INDEX_WIDGET_BACKGROUND
     colorFromRgb(0xDE,0x8D,0x31),   // COLOR_INDEX_BUTTON_BACKGROUND
@@ -39,7 +38,7 @@ const color_t colorPalette1[COLOR_PALETTE_SIZE] = {
     colorFromRgb(0x7A,0x51,0x22),   // COLOR_INDEX_3DFRAME_DARK2
     colorFromRgb(200,200,0),        // COLOR_INDEX_FOCUS_FRAME
     colorFromRgb(255,255,255),      // COLOR_INDEX_TEXT_ACTIVE
-*/
+#endif
 };
 
 color_t *colorPalette = (color_t *)colorPalette1;
@@ -367,7 +366,7 @@ void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox)
         LCD_SetAltPenColor(CL_WHITE);
         img = (checkBox->isChecked) ? CHECKBOX_IMG_CHECKED :
                                      CHECKBOX_IMG_EMPTY;
-        LCD_SetImageOutput(IMAGE_PAINT_SET_PIXELS | IMAGE_PAINT_VOID_PIXELS);
+        LCD_SetImageOutputMode(IMAGE_PAINT_SET_PIXELS | IMAGE_PAINT_VOID_PIXELS);
         LCD_drawPackedImage(img, wx+2, y_aligned, CHECKBOX_GRAPH_XSIZE, CHECKBOX_GRAPH_YSIZE);
 
     }

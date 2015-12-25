@@ -2,7 +2,7 @@
 #define __GUI_GRAPH_WIDGETS_
 
 #include <stdint.h>
-#include "guiGraphPrimitives.h"
+#include "guiGraphLib.h"
 #include "guiWidgets.h"
 
 #include "guiButton.h"

@@ -1,6 +1,6 @@
 
 #include <stdint.h>
-#include "guiGraphHAL.h"
+#include "guiGraphLib.h"
 
 
 #ifdef __cplusplus

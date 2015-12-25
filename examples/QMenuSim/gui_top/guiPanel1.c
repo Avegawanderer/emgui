@@ -9,9 +9,7 @@
 #include <stdio.h>      // due to printf
 #include <stdint.h>
 
-#include "guiFonts.h"
-#include "guiGraphHAL.h"
-#include "guiGraphPrimitives.h"
+#include "guiGraphLib.h"
 #include "guiGraphWidgets.h"
 
 #include "guiCore.h"

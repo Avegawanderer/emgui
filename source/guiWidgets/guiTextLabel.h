@@ -2,7 +2,7 @@
 #define __GUI_TEXT_LABEL_H_
 
 #include "guiWidgets.h"
-#include "guiFonts.h"
+#include "guiGraphLib.h"
 
 
 // Widget type ID - must be unique!

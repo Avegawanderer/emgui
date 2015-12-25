@@ -2,7 +2,7 @@
 #define __GUI_RADIO_BUTTON_H_
 
 #include "guiWidgets.h"
-#include "guiFonts.h"
+#include "guiGraphLib.h"
 
 // Widget type ID - must be unique!
 #define WT_RADIOBUTTON  0x04

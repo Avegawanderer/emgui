@@ -11,9 +11,7 @@
 
 #include "guiConfig.h"
 
-#include "guiFonts.h"
-#include "guiGraphHAL.h"
-#include "guiGraphPrimitives.h"
+#include "guiGraphLib.h"
 #include "guiGraphWidgets.h"
 
 #include "guiCore.h"

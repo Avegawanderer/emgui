@@ -8,7 +8,7 @@
 #ifndef __GUI_CONFIG_H_
 #define __GUI_CONFIG_H_
 
-#include <stdint.h>
+#include "stdint.h"
 
 // Setup core queue size
 #define emGUI_CORE_QUEUE_SIZE 20
@@ -49,10 +49,6 @@ enum emGUI_Timers { TMR_TIME_UPDATE };
 // Global color scheme definition
 #define emGUI_COLORED
 //#define emGUI_MONOCHROME
-
-// Screen size definitions in pixels
-#define LCD_XSIZE 320
-#define LCD_YSIZE 240
 
 
 
