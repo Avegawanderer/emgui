@@ -6,6 +6,7 @@
 **********************************************************/
 
 #include <stdint.h>
+#include "guiConfig.h"
 #include "guiGraphWidgets.h"
 #include "guiGraphLib.h"
 #include "guiGraphImages.h"
@@ -16,6 +17,7 @@
 int16_t wx;
 int16_t wy;
 
+#ifdef emGUI_COLORED
 const color_t colorPalette1[COLOR_PALETTE_SIZE] = {
 
 #if 1
@@ -42,7 +44,7 @@ const color_t colorPalette1[COLOR_PALETTE_SIZE] = {
 };
 
 color_t *colorPalette = (color_t *)colorPalette1;
-
+#endif //emGUI_COLORED
 
 
 
@@ -66,7 +68,7 @@ void guiGraph_OffsetBaseXY(int16_t dx, int16_t dy)
     wy += dy;
 }
 
-
+#ifdef emGUI_COLORED
 
 //-------------------------------------------------------//
 // Draws nice 3-D frame
@@ -91,6 +93,7 @@ void guiGraph_Draw3DFrame(rect_t *rect, uint8_t frameState)
     }
 
     LCD_SetLineStyle(LINE_STYLE_SOLID);
+    LCD_SetPenMode(PEN_SOLID);
 
     // top, left
     LCD_SetPenColor(colorPalette1[c1]);
@@ -113,91 +116,7 @@ void guiGraph_Draw3DFrame(rect_t *rect, uint8_t frameState)
 
 
 
-//-------------------------------------------------------//
-// Draw a panel
-//
-//
-//-------------------------------------------------------//
-void guiGraph_DrawPanel(guiPanel_t *panel)
-{
-    rect_t rect1;
 
-    if (panel->redrawForced)
-    {
-        // Background
-        LCD_SetFillColor(colorPalette1[COLOR_INDEX_WIDGET_BACKGROUND]);
-        rect1.x1 = wx;
-        rect1.x2 = wx + panel->width - 1;
-        rect1.y1 = wy;
-        rect1.y2 = wy + panel->height - 1;
-        LCD_FillRect(&rect1);
-
-        /* Frame
-        rect1.x1 = wx;
-        rect1.x2 = wx + panel->width - 1;
-        rect1.y1 = wy;
-        rect1.y2 = wy + panel->height - 1; */
-
-        if ((panel->frame == FRAME3D_SUNKEN) || (panel->frame == FRAME3D_RAISED))
-        {
-            guiGraph_Draw3DFrame(&rect1, panel->frame);
-        }
-        else if (panel->frame == FRAME_SINGLE)
-        {
-            LCD_SetPenColor(colorPalette[COLOR_INDEX_3DFRAME_DARK1]);
-            LCD_SetLineStyle(LINE_STYLE_SOLID);
-            LCD_DrawRect(&rect1);
-        }
-
-    }
-
-    if ((panel->redrawForced) || (panel->redrawFocus))
-    {
-        if (panel->showFocus)
-        {
-            if (panel->isFocused)
-            {
-                LCD_SetPenColor(colorPalette[COLOR_INDEX_FOCUS_FRAME]);
-                LCD_SetLineStyle(LINE_STYLE_DOTTED);
-            }
-            else
-            {
-                LCD_SetPenColor(colorPalette[COLOR_INDEX_WIDGET_BACKGROUND]);
-                LCD_SetLineStyle(LINE_STYLE_SOLID);
-            }
-            rect1.x1 = wx + PANEL_FOCUS_RECT_MARGIN;
-            rect1.x2 = wx + panel->width - 1 - PANEL_FOCUS_RECT_MARGIN;
-            rect1.y1 = wy + PANEL_FOCUS_RECT_MARGIN;
-            rect1.y2 = wy + panel->height - 1 - PANEL_FOCUS_RECT_MARGIN;
-            LCD_DrawRect(&rect1);
-        }
-    }
-}
-
-
-
-
-//-------------------------------------------------------//
-// Draw a form
-//
-//
-//-------------------------------------------------------//
-/*
-void guiGraph_DrawForm(guiForm_t *form)
-{
-    rect_t rect1;
-
-    if (form->redrawFlags & FORM_REDRAW_BACKGROUND)
-    {
-        LCD_SetFillColor(colorPalette1[COLOR_INDEX_WIDGET_BACKGROUND]);
-        rect1.x1 = wx;
-        rect1.x2 = wx + form->width - 1;
-        rect1.y1 = wy;
-        rect1.y2 = wy + form->height - 1;
-        LCD_FillRect(&rect1);
-    }
-}
-*/
 
 //-------------------------------------------------------//
 // Draw a textLabel
@@ -272,7 +191,8 @@ void guiGraph_DrawButton(guiButton_t *button)
         LCD_SetFillColor(colorPalette1[COLOR_INDEX_BUTTON_BACKGROUND]);
         LCD_FillRect(&rect1);
         LCD_SetFont(button->font);
-        LCD_SetPenColor(colorPalette1[COLOR_INDEX_TEXT_ACTIVE]);
+        LCD_SetAltPenMode(PEN_TRANSPARENT);
+        LCD_SetPen(PEN_SOLID, colorPalette1[COLOR_INDEX_TEXT_ACTIVE]);
         LCD_PrintStringAligned(button->text, &rect1, button->textAlignment);
     }
 
@@ -280,12 +200,13 @@ void guiGraph_DrawButton(guiButton_t *button)
     {
         if (button->isFocused)
         {
-            LCD_SetPenColor(colorPalette[COLOR_INDEX_FOCUS_FRAME]);
+            LCD_SetPen(PEN_SOLID, colorPalette[COLOR_INDEX_FOCUS_FRAME]);
+            LCD_SetAltPen(PEN_SOLID, colorPalette[COLOR_INDEX_BUTTON_BACKGROUND]);
             LCD_SetLineStyle(LINE_STYLE_DOTTED);
         }
         else
         {
-            LCD_SetPenColor(colorPalette[COLOR_INDEX_BUTTON_BACKGROUND]);
+            LCD_SetPen(PEN_SOLID, colorPalette[COLOR_INDEX_BUTTON_BACKGROUND]);
             LCD_SetLineStyle(LINE_STYLE_SOLID);
         }
 
@@ -312,94 +233,6 @@ void guiGraph_DrawButton(guiButton_t *button)
 
 
 
-void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox)
-{
-    int8_t y_aligned;
-    rect_t rect1;
-    uint8_t *img;
-
-    y_aligned = checkBox->height - CHECKBOX_GRAPH_YSIZE;
-    y_aligned /= 2;
-    y_aligned = wy + y_aligned;
-
-
-    rect1.x1 = wx;
-    rect1.x2 = wx + checkBox->width - 1;
-    rect1.y1 = wy;
-    rect1.y2 = wy + checkBox->height - 1;
-
-
-    if (checkBox->redrawForced)
-    {
-       // Erase rectangle
-        LCD_SetFillColor(colorPalette1[COLOR_INDEX_WIDGET_BACKGROUND]);
-        LCD_FillRect(&rect1);
-
-       // Draw string
-       if (checkBox->text)
-       {
-           LCD_SetPenColor(colorPalette1[COLOR_INDEX_TEXT_ACTIVE]);
-           LCD_SetFont(checkBox->font);
-           rect1.x1 = wx + 2 + CHECKBOX_GRAPH_XSIZE + CHECKBOX_TEXT_MARGIN;
-           rect1.y1 = wy + 1;
-           rect1.x2 = wx + checkBox->width - 2;
-           rect1.y2 = wy + checkBox->height - 2;
-           LCD_PrintStringAligned(checkBox->text, &rect1, checkBox->textAlignment);
-       }
-
-       // Check frame
-       rect1.x1 = wx;
-       rect1.x2 = wx + 3 + CHECKBOX_GRAPH_XSIZE;
-       rect1.y1 = y_aligned - 2;
-       rect1.y2 = y_aligned + 1 + CHECKBOX_GRAPH_YSIZE;
-       guiGraph_Draw3DFrame(&rect1, FRAME3D_SUNKEN);
-
-       // Draw rectangle frame
-       //LCD_SetPixelOutputMode(PIXEL_MODE_REWRITE);
-       //LCD_DrawRect(wx + 2,y_aligned,CHECKBOX_GRAPH_XSIZE,CHECKBOX_GRAPH_YSIZE,1);
-    }
-
-
-    if ((checkBox->redrawForced) || (checkBox->redrawCheckedState))
-    {
-        LCD_SetPenColor(CL_BLACK);
-        LCD_SetAltPenColor(CL_WHITE);
-        img = (checkBox->isChecked) ? CHECKBOX_IMG_CHECKED :
-                                     CHECKBOX_IMG_EMPTY;
-        LCD_SetImageOutputMode(IMAGE_PAINT_SET_PIXELS | IMAGE_PAINT_VOID_PIXELS);
-        LCD_drawPackedImage(img, wx+2, y_aligned, CHECKBOX_GRAPH_XSIZE, CHECKBOX_GRAPH_YSIZE);
-
-    }
-
-
-
-    if ((checkBox->redrawForced) || (checkBox->redrawFocus))
-    {
-        rect1.x1 = wx + 3 + CHECKBOX_GRAPH_XSIZE + CHECKBOX_TEXT_MARGIN/2;
-        rect1.y1 = wy + 1;
-        rect1.x2 = wx + checkBox->width - 2;
-        rect1.y2 = wy + checkBox->height - 2;
-
-        if (checkBox->isFocused)
-        {
-          LCD_SetLineStyle(LINE_STYLE_DOTTED);
-          LCD_SetPenColor(colorPalette[COLOR_INDEX_FOCUS_FRAME]);
-          LCD_DrawRect(&rect1);
-        }
-        else
-        {
-          LCD_SetLineStyle(LINE_STYLE_SOLID);
-          LCD_SetPenColor(colorPalette[COLOR_INDEX_WIDGET_BACKGROUND]);
-        //     if (checkBox->hasFrame)
-              LCD_DrawRect(&rect1);
-        //     else
-        //         LCD_DrawRect(wx,wy,checkBox->width,checkBox->height);
-        }
-    }
-
-
-
-}
 
 
 
@@ -431,7 +264,8 @@ void guiGraph_DrawRadioButton(guiRadioButton_t *button)
         // Draw string
         if (button->text)
         {
-            LCD_SetPenColor(colorPalette1[COLOR_INDEX_TEXT_ACTIVE]);
+            LCD_SetPen(PEN_SOLID, colorPalette1[COLOR_INDEX_TEXT_ACTIVE]);
+            LCD_SetAltPenMode(PEN_TRANSPARENT);
             LCD_SetFont(button->font);
             rect1.x1 = wx + 2 + RADIOBUTTON_RADIUS*2 + RADIOBUTTON_TEXT_MARGIN;
             rect1.y1 = wy + 1;
@@ -441,6 +275,7 @@ void guiGraph_DrawRadioButton(guiRadioButton_t *button)
         }
     }
 
+    LCD_SetPenMode(PEN_SOLID);
 
     if ((button->redrawForced) || (button->redrawCheckedState))
     {
@@ -474,18 +309,86 @@ void guiGraph_DrawRadioButton(guiRadioButton_t *button)
         if (button->isFocused)
         {
           LCD_SetLineStyle(LINE_STYLE_DOTTED);
-          LCD_SetPenColor(colorPalette[COLOR_INDEX_FOCUS_FRAME]);
+          LCD_SetPen(PEN_SOLID, colorPalette[COLOR_INDEX_FOCUS_FRAME]);
+          LCD_SetAltPen(PEN_SOLID, colorPalette[COLOR_INDEX_WIDGET_BACKGROUND]);
           LCD_DrawRect(&rect1);
         }
         else
         {
           LCD_SetLineStyle(LINE_STYLE_SOLID);
-          LCD_SetPenColor(colorPalette[COLOR_INDEX_WIDGET_BACKGROUND]);
+          LCD_SetPen(PEN_SOLID, colorPalette[COLOR_INDEX_WIDGET_BACKGROUND]);
           LCD_DrawRect(&rect1);
         }
     }
 
 }
+
+#endif //emGUI_COLORED
+
+
+#ifdef emGUI_MONOCHROME
+
+
+//-------------------------------------------------------//
+// Draw a textLabel
+//
+//
+//-------------------------------------------------------//
+void guiGraph_DrawTextLabel(guiTextLabel_t *textLabel)
+{
+    rect_t rect;
+
+    //-----------------------------------------//
+    // Draw background and text
+    if (textLabel->redrawForced)
+    {
+        // Erase rectangle
+        LCD_SetFillColor(0);
+        LCD_FillRectP(wx ,wy, wx + textLabel->width - 1, wy + textLabel->height - 1);
+
+        // Draw string
+        if (textLabel->text)
+        {
+            LCD_SetFont(textLabel->font);
+            LCD_SetPen(PEN_SOLID, CL_BLACK);
+            LCD_SetAltPen(PEN_TRANSPARENT, CL_WHITE);
+            rect.x1 = wx + 0 + TEXT_LABEL_TEXT_MARGIN;
+            rect.y1 = wy + 0;
+            rect.x2 = wx + textLabel->width - 1 - TEXT_LABEL_TEXT_MARGIN;
+            rect.y2 = wy + textLabel->height - 1;
+            LCD_PrintStringAligned(textLabel->text, &rect, textLabel->textAlignment);
+        }
+    }
+
+    //-----------------------------------------//
+    // Draw focus
+    if (((textLabel->redrawForced) || (textLabel->redrawFocus)) &&
+        (textLabel->showFocus))
+    {
+        if (textLabel->isFocused)
+        {
+            LCD_SetLineStyle(LINE_STYLE_DOTTED);
+            LCD_SetPen(PEN_SOLID, CL_BLACK);
+            LCD_SetAltPen(PEN_SOLID, CL_WHITE);
+            LCD_DrawRectP(wx, wy, wx + textLabel->width - 1, wy + textLabel->height - 1);
+        }
+        else
+        {
+            LCD_SetLineStyle(LINE_STYLE_SOLID);
+            if (textLabel->hasFrame)
+                LCD_SetPen(PEN_SOLID, CL_BLACK);
+            else
+                LCD_SetPen(PEN_SOLID, CL_WHITE);
+            LCD_DrawRectP(wx, wy, wx + textLabel->width - 1, wy + textLabel->height - 1);
+        }
+    }
+}
+
+
+
+#endif //emGUI_MONOCHROME
+
+
 
 
 

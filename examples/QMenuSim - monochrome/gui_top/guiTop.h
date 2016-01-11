@@ -1,6 +1,6 @@
 
 #include <stdint.h>
-#include "guiGraphHAL.h"
+#include "guiGraphLib.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,6 +25,9 @@ void registerLcdUpdateCallback(cbLcdUpdatePtr fptr);
 
 void guiInitialize(void);
 void guiDrawAll(void);
+void guiTouchMoved(int x, int y);
+void guiTouchPressed(int x, int y);
+void guiTouchReleased(int x, int y);
 void guiButtonEvent(uint16_t buttonCode, uint8_t eventType);
 void guiEncoderRotated(int32_t delta);
 

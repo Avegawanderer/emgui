@@ -9,55 +9,6 @@
 
 
 
-
-//-------------------------------------------------------//
-// Draws B/W packed image, coordinates are absolute.
-// Image is printed using:
-//  - penColor
-//  - altPenColor
-//  - outputMode
-//-------------------------------------------------------//
-void LCD_drawPackedImage(const uint8_t *img, int16_t x_pos, int16_t y_pos, uint16_t img_width, uint16_t img_height)
-{
-    uint8_t bit_mask = 0x01;
-    uint8_t temp;
-    uint16_t img_index;
-    uint16_t img_start_index = 0;
-    int16_t x;
-    int16_t y_fin = y_pos + img_height;
-
-    while(y_pos < y_fin)
-    {
-        img_index = img_start_index;
-        for (x = x_pos; x < x_pos + img_width; x++)
-        {
-            temp = img[img_index++];
-            if (temp & bit_mask)
-            {
-                if (imageOutputMode & IMAGE_PAINT_SET_PIXELS)
-                {
-                    LCD_PutPixel(x,y_pos,penColor);
-                }
-            }
-            else if (imageOutputMode & IMAGE_PAINT_VOID_PIXELS)
-            {
-                LCD_PutPixel(x,y_pos,altPenColor);
-            }
-        }
-        y_pos++;
-        if (bit_mask == 0x80)
-        {
-            bit_mask = 0x01;
-            img_start_index += img_width;
-        }
-        else
-        {
-            bit_mask = bit_mask << 1;
-        }
-    }
-}
-
-
 //-------------------------------------------------------//
 // Rerurns width and offset of a font item
 // Font array MUST be sorted by code.
@@ -124,6 +75,7 @@ uint8_t LCD_GetFontItem(const tFont *font, uint8_t code, uint8_t *width, uint16_
     return 0;
 }
 
+
 //-------------------------------------------------------//
 // Rerurns length of a string in pixels
 //
@@ -168,7 +120,6 @@ void LCD_PrintString(char *str, int16_t x, int16_t y)
 }
 
 
-
 //-------------------------------------------------------//
 // Prints a string with LCD_currentFont inside rectangle using
 //  alignment
@@ -211,8 +162,7 @@ void LCD_PrintStringAligned(char *str, rect_t *rect, uint8_t alignment)
         y_aligned = rect->y1 + ((int16_t)(rect->y2 - rect->y1 + 1) - currentFont->height) / 2;
     }
 
-    // Now print string
-    imageOutputMode = IMAGE_PAINT_SET_PIXELS;   // Paint only set pixels in font bitmaps
+    // Now print the string
     while((c = str[index++]))
     {
         if (LCD_GetFontItem(currentFont, c, &charWidth, &charOffset))

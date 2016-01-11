@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->PixelDisplay1->setSize(DISPLAY_XSIZE, DISPLAY_YSIZE);
     ui->PixelDisplay1->setDataEncoding(PixelDisplay::MONOCHROME_3310_8bit);
-    ui->PixelDisplay1->setScale(4.0);
+    ui->PixelDisplay1->setScale(3.0);
 
     StatusLabel_LCD0 = new QLabel(this);
     ui->statusBar->addWidget(StatusLabel_LCD0);
@@ -235,16 +235,31 @@ void MainWindow::updateStatusBar(void)
 void MainWindow::on_touchMove(void)
 {
     updateStatusBar();
+    if (ui->PixelDisplay1->touchState.isPressed)
+    {
+        guiTouchMoved(ui->PixelDisplay1->touchState.x, ui->PixelDisplay1->touchState.y);
+        if (ui->checkBox_updMode->checkState())
+            on_LCD_update();
+    }
 }
 
 void MainWindow::on_touchPress(void)
 {
     updateStatusBar();
+    if (ui->PixelDisplay1->touchState.isPressed)
+    {
+        guiTouchPressed(ui->PixelDisplay1->touchState.x, ui->PixelDisplay1->touchState.y);
+        if (ui->checkBox_updMode->checkState())
+            on_LCD_update();
+    }
 }
 
 void MainWindow::on_touchRelease(void)
 {
     updateStatusBar();
+    guiTouchReleased(ui->PixelDisplay1->touchState.x, ui->PixelDisplay1->touchState.y);
+    if (ui->checkBox_updMode->checkState())
+        on_LCD_update();
 }
 
 

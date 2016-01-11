@@ -126,7 +126,15 @@ void LCD_DrawHorLine(uint16_t x, uint16_t y, uint16_t length)
     while(length--)
     {
         if (dashCounter < dashCompare)
-            LCD_PutPixel(x,y,penColor);
+        {
+            if (pen.mode == PEN_SOLID)
+                LCD_PutPixel(x, y, pen.color);
+        }
+        else
+        {
+            if (altPen.mode == PEN_SOLID)
+                LCD_PutPixel(x, y, altPen.color);
+        }
 
         x++;
         dashCounter++;
@@ -178,7 +186,15 @@ void LCD_DrawVertLine(uint16_t x, uint16_t y, int16_t length)
     while(length--)
     {
         if (dashCounter < dashCompare)
-            LCD_PutPixel(x,y,penColor);
+        {
+            if (pen.mode == PEN_SOLID)
+                LCD_PutPixel(x, y, pen.color);
+        }
+        else
+        {
+            if (altPen.mode == PEN_SOLID)
+                LCD_PutPixel(x, y, altPen.color);
+        }
 
         y += y_increment;
         dashCounter++;
@@ -190,8 +206,9 @@ void LCD_DrawVertLine(uint16_t x, uint16_t y, int16_t length)
 
 
 //-------------------------------------------------------//
-// Draws rectangle line with penColor
+// Draws rectangle with penColor
 //
+//  Rectangle is specified by 2 points
 //-------------------------------------------------------//
 #if LcdLibConfig_UseDefaultDrawRectP == 1
 void LCD_DrawRectP(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
@@ -212,6 +229,7 @@ void LCD_DrawRectP(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
 //-------------------------------------------------------//
 // Fills a rectangle with fillColor
 //
+//  Rectangle is specified by 2 points
 //-------------------------------------------------------//
 #if LcdLibConfig_UseDefaultFillRectP == 1
 void LCD_FillRectP(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
@@ -224,23 +242,45 @@ void LCD_FillRectP(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
 #endif
 
 
+
 //-------------------------------------------------------//
-// Draws rectangle line with penColor
+// Draws rectangle with penColor
 //
+//  Rectangle is specified by pointer to struct rect_t
 //-------------------------------------------------------//
 void LCD_DrawRect(rect_t *rect)
 {
     LCD_DrawRectP(rect->x1, rect->y1, rect->x2, rect->y2);
 }
 
+//-------------------------------------------------------//
+// Draws rectangle with penColor
+//
+//  Rectangle is specified by 1 point and width + height
+//-------------------------------------------------------//
+void LCD_DrawRectWH(uint16_t x, uint16_t y, int16_t width, int16_t height)
+{
+    LCD_DrawRectP(x, y, x + width - 1, y + height - 1);
+}
 
 //-------------------------------------------------------//
 // Fills a rectangle with fillColor
 //
+//  Rectangle is specified by pointer to struct rect_t
 //-------------------------------------------------------//
 void LCD_FillRect(rect_t* rect)
 {
     LCD_FillRectP(rect->x1, rect->y1, rect->x2, rect->y2);
+}
+
+//-------------------------------------------------------//
+// Fills a rectangle with fillColor
+//
+//  Rectangle is specified by pointer to struct rect_t
+//-------------------------------------------------------//
+void LCD_FillRectWH(uint16_t x, uint16_t y, int16_t width, int16_t height)
+{
+    LCD_FillRectP(x, y, x + width - 1, y + height - 1);
 }
 
 
@@ -265,6 +305,7 @@ void LCD_DrawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
     int16_t stepy = 0;
     int16_t fraction = 0;
 
+    if (pen.mode != PEN_SOLID) return;
 //       if (x1>LCD_X_RES || x2>LCD_X_RES || y1>LCD_Y_RES || y2>LCD_Y_RES) return;
 
     dy = y2 - y1;
@@ -283,7 +324,7 @@ void LCD_DrawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
     else stepx = 1;
     dy <<= 1;
     dx <<= 1;
-    LCD_PutPixel(x1,y1,penColor);
+    LCD_PutPixel(x1,y1,pen.color);
     if (dx > dy)
     {
         fraction = dy - (dx >> 1);
@@ -296,7 +337,7 @@ void LCD_DrawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
             }
             x1 += stepx;
             fraction += dy;
-            LCD_PutPixel(x1,y1,penColor);
+            LCD_PutPixel(x1,y1,pen.color);
         }
     }
     else
@@ -311,7 +352,7 @@ void LCD_DrawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
             }
             y1 += stepy;
             fraction += dx;
-            LCD_PutPixel(x1,y1,penColor);
+            LCD_PutPixel(x1,y1,pen.color);
         }
     }
 }
@@ -329,17 +370,18 @@ void LCD_DrawCircle(int16_t x0, int16_t y0, int16_t radius)
     int16_t yChange = 0;
     int16_t radiusError = 0;
 
+    if (pen.mode != PEN_SOLID) return;
     while (x >= y)
     {
-        LCD_PutPixel(x0 - x, y0 + y, penColor);
-        LCD_PutPixel(x0 + x, y0 + y, penColor);
-        LCD_PutPixel(x0 - x, y0 - y, penColor);
-        LCD_PutPixel(x0 + x, y0 - y, penColor);
+        LCD_PutPixel(x0 - x, y0 + y, pen.color);
+        LCD_PutPixel(x0 + x, y0 + y, pen.color);
+        LCD_PutPixel(x0 - x, y0 - y, pen.color);
+        LCD_PutPixel(x0 + x, y0 - y, pen.color);
 
-        LCD_PutPixel(x0 - y, y0 + x, penColor);
-        LCD_PutPixel(x0 + y, y0 + x, penColor);
-        LCD_PutPixel(x0 - y, y0 - x, penColor);
-        LCD_PutPixel(x0 + y, y0 - x, penColor);
+        LCD_PutPixel(x0 - y, y0 + x, pen.color);
+        LCD_PutPixel(x0 + y, y0 + x, pen.color);
+        LCD_PutPixel(x0 - y, y0 - x, pen.color);
+        LCD_PutPixel(x0 + y, y0 - x, pen.color);
 
         y++;
         radiusError += yChange;
@@ -393,5 +435,60 @@ void LCD_DrawFilledCircle(int16_t x0, int16_t y0, int16_t radius)
 }
 
 
+
+//=================================================================//
+// Images
+//
+//=================================================================//
+
+
+//-------------------------------------------------------//
+// Draws B/W packed image, coordinates are absolute.
+// Image is printed using:
+//  - penColor
+//  - altPenColor
+//  - imageOutputMode
+//-------------------------------------------------------//
+#if LcdLibConfig_UseDefaultDrawPackedImage == 1
+void LCD_drawPackedImage(const uint8_t *img, int16_t x_pos, int16_t y_pos, uint16_t img_width, uint16_t img_height)
+{
+    uint8_t bit_mask = 0x01;
+    uint8_t temp;
+    uint16_t img_index;
+    uint16_t img_start_index = 0;
+    int16_t x;
+    int16_t y_fin = y_pos + img_height;
+
+    while(y_pos < y_fin)
+    {
+        img_index = img_start_index;
+        for (x = x_pos; x < x_pos + img_width; x++)
+        {
+            temp = img[img_index++];
+            if (temp & bit_mask)
+            {
+                if (pen.mode == PEN_SOLID)
+                {
+                    LCD_PutPixel(x,y_pos,pen.color);
+                }
+            }
+            else if (altPen.mode == PEN_SOLID)
+            {
+                LCD_PutPixel(x,y_pos,altPen.color);
+            }
+        }
+        y_pos++;
+        if (bit_mask == 0x80)
+        {
+            bit_mask = 0x01;
+            img_start_index += img_width;
+        }
+        else
+        {
+            bit_mask = bit_mask << 1;
+        }
+    }
+}
+#endif //LcdLibConfig_UseDefaultDrawPackedImage
 
 

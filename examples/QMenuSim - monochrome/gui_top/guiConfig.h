@@ -25,9 +25,9 @@
 enum emGUI_Timers { TMR_TIME_UPDATE };
 
 // Enable or disable touch support
-//#define emGUI_USE_TOUCH_SUPPORT
+#define emGUI_USE_TOUCH_SUPPORT
 // Touch processing option
-//#define emGUI_ALWAYS_PASS_TOUCH_TO_FOCUSED
+#define emGUI_ALWAYS_PASS_TOUCH_TO_FOCUSED
 
 // Enable or disable widgets update stuff
 #define emGUI_USE_UPDATE
@@ -42,15 +42,7 @@ enum emGUI_Timers { TMR_TIME_UPDATE };
 //#define emGUI_COLORED
 #define emGUI_MONOCHROME
 
-// Screen size definitions in points for Nokia 1202 LCD
-#define LCD_XSIZE 128
-#define LCD_YSIZE 64
 
-// Buffer size in bytes (1 byte = 8 pixels, just like regular Nokia 3310 display)
-#define LCD_BUFFER_SIZE (128*64/8)
-
-// LCD functions settings
-//#define SOFT_HORIZ_REVERSED
 
 
 

@@ -16,6 +16,7 @@ INPUT(
 ./release\guiCheckBox.o
 ./release\guiGraphWidgets.o
 ./release\guiGraphImages.o
+./release\guiGraphPanel.o
 ./release\lcd_lib.o
 ./release\lcd_lib_font.o
 ./release\lcd_lib_graph.o
@@ -24,6 +25,7 @@ INPUT(
 ./release\lcd_font_h10_bold.o
 ./release\lcd_font_h10.o
 ./release\lcd_font_6x8_mono.o
+./release\guiGraphCheckbox.o
 ./release\moc_mainwindow.o
 ./release\moc_pixeldisplay.o
 );

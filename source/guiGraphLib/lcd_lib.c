@@ -3,39 +3,67 @@
 #include "lcd_lib_private.h"
 
 
-color_t penColor;             // Pen is used for drawing lines, frames, circles, etc
-color_t altPenColor;          //
-color_t fillColor;            // Used for filling objects
-const tFont* currentFont;     // Font that currently used
-uint8_t imageOutputMode;       // Specifies text background - OUTPUT_MODE_TRANSPARENT or OUTPUT_MODE_SOLID
+lcd_pen_t pen;                  // Pen is used for drawing lines, frames, circles, etc
+lcd_pen_t altPen;
+color_t fillColor;              // Used for filling objects
 uint8_t lineStyle;
+const tFont* currentFont;       // Font that currently used
 
-
-const tFont* currentFont;
 
 
 //-------------------------------------------------------//
-// Sets current font for text printing
+// Sets pen mode and color
 //-------------------------------------------------------//
-void LCD_SetFont(const tFont *newFont)
+void LCD_SetPen(const uint8_t mode, const color_t newColor)
 {
-    currentFont = newFont;
+    pen.color = newColor;
+    pen.mode = mode;
 }
+
 
 //-------------------------------------------------------//
 // Sets pen color
 //-------------------------------------------------------//
 void LCD_SetPenColor(const color_t newColor)
 {
-    penColor = newColor;
+    pen.color = newColor;
 }
+
+
+//-------------------------------------------------------//
+// Sets pen mode
+//-------------------------------------------------------//
+void LCD_SetPenMode(const uint8_t mode)
+{
+    pen.mode = mode;
+}
+
+
+//-------------------------------------------------------//
+// Sets alternate pen mode and color
+//-------------------------------------------------------//
+void LCD_SetAltPen(const uint8_t mode, const color_t newColor)
+{
+    altPen.color = newColor;
+    altPen.mode = mode;
+}
+
 
 //-------------------------------------------------------//
 // Sets alternate pen color
 //-------------------------------------------------------//
 void LCD_SetAltPenColor(const color_t newColor)
 {
-    altPenColor = newColor;
+    altPen.color = newColor;
+}
+
+
+//-------------------------------------------------------//
+// Sets alternate pen mode
+//-------------------------------------------------------//
+void LCD_SetAltPenMode(const uint8_t mode)
+{
+    altPen.mode = mode;
 }
 
 //-------------------------------------------------------//
@@ -46,13 +74,6 @@ void LCD_SetFillColor(const color_t newColor)
     fillColor = newColor;
 }
 
-//-------------------------------------------------------//
-// Sets image output mode
-//-------------------------------------------------------//
-void LCD_SetImageOutputMode(uint8_t newMode)
-{
-    imageOutputMode = newMode & (IMAGE_PAINT_SET_PIXELS | IMAGE_PAINT_VOID_PIXELS);
-}
 
 //-------------------------------------------------------//
 // Sets line style
@@ -62,4 +83,12 @@ void LCD_SetLineStyle(uint8_t newStyle)
     lineStyle = newStyle;
 }
 
+
+//-------------------------------------------------------//
+// Sets current font for text printing
+//-------------------------------------------------------//
+void LCD_SetFont(const tFont *newFont)
+{
+    currentFont = newFont;
+}
 

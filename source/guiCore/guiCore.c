@@ -499,7 +499,10 @@ void guiCore_ProcessTouchEvent(int16_t x, int16_t y, uint8_t touchState)
     event.payload.params.lparam = (uint16_t)x;
     event.payload.params.hparam = (uint16_t)y;
 #ifdef emGUI_ALWAYS_PASS_TOUCH_TO_FOCUSED
-    guiCore_AddMessageToQueue(focusedWidget, &event);
+    if (focusedWidget != 0)
+        guiCore_AddMessageToQueue(focusedWidget, &event);
+    else
+        guiCore_AddMessageToQueue(rootWidget, &event);
 #else
     if ((focusedWidget != 0) && (focusedWidget->keepTouch))
         guiCore_AddMessageToQueue(focusedWidget, &event);

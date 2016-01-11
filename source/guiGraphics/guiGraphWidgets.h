@@ -2,6 +2,7 @@
 #define __GUI_GRAPH_WIDGETS_
 
 #include <stdint.h>
+#include "guiConfig.h"
 #include "guiGraphLib.h"
 #include "guiWidgets.h"
 
@@ -39,26 +40,6 @@
 #define BUTTON_FOCUS_RECT_MARGIN    2
 
 
-//---------------------------------------------//
-// Checkbox
-/*
-#define CHECKBOX_GRAPH_XSIZE  10
-#define CHECKBOX_GRAPH_YSIZE  10
-#define CHECKBOX_TEXT_MARGIN  6
-#define CHECKBOX_IMG_CHECKED  checkbox_10x10_checked_no_frame
-#define CHECKBOX_IMG_EMPTY  checkbox_10x10_empty_no_frame
-*/ /*
-#define CHECKBOX_GRAPH_XSIZE  8
-#define CHECKBOX_GRAPH_YSIZE  8
-#define CHECKBOX_TEXT_MARGIN  4
-#define CHECKBOX_IMG_CHECKED  checkbox_8x8_checked_no_frame
-#define CHECKBOX_IMG_EMPTY  checkbox_8x8_empty_no_frame
-*/
-#define CHECKBOX_GRAPH_XSIZE  9
-#define CHECKBOX_GRAPH_YSIZE  9
-#define CHECKBOX_TEXT_MARGIN  5
-#define CHECKBOX_IMG_CHECKED  checkbox_9x9_checked_no_frame
-#define CHECKBOX_IMG_EMPTY  checkbox_9x9_empty_no_frame
 
 //---------------------------------------------//
 // Panel
@@ -75,11 +56,29 @@
 // Textlabel
 #define TEXT_LABEL_TEXT_MARGIN  2
 
+#ifdef emGUI_MONOCHROME
+// Pixel output modes
+#define PIXEL_MODE_REWRITE  0x00
+#define PIXEL_MODE_AND      0x01
+#define PIXEL_MODE_OR       0x02
+#define PIXEL_MODE_XOR      0x03
 
+// Image output modes
+#define IMAGE_MODE_NORMAL    0x01
+#define IMAGE_MODE_INVERSE   0x00
+// Aliases for fill rect
+#define FILL_WITH_BLACK      0x01
+#define FILL_WITH_WHITE      0x00
 
+#define LCD_FillRect(x_pos, y_pos, width, height, mode) \
+    LCD_DrawImage(0, x_pos, y_pos, width, height, mode)
+
+#endif
+
+#ifdef emGUI_COLORED
 extern const color_t colorPalette1[];
 color_t *colorPalette;
-
+#endif
 
 extern int16_t wx;
 extern int16_t wy;
@@ -89,10 +88,8 @@ void guiGraph_OffsetBaseXY(int16_t dx, int16_t dy);
 
 void guiGraph_Draw3DFrame(rect_t *rect, uint8_t frameState);
 
-void guiGraph_DrawPanel(guiPanel_t *panel);
 void guiGraph_DrawTextLabel(guiTextLabel_t *textLabel);
 void guiGraph_DrawButton(guiButton_t *button);
-void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox);
 void guiGraph_DrawRadioButton(guiRadioButton_t *button);
 
 

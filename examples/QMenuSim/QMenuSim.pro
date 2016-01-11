@@ -36,6 +36,7 @@ SOURCES += main.cpp\
 	../../source/guiWidgets/guiCheckBox.c \
         ../../source/guiGraphics/guiGraphWidgets.c \
         ../../source/guiGraphics/guiGraphImages.c \
+        ../../source/guiGraphics/guiGraphPanel.c \
         ../../source/guiGraphLib/lcd_lib.c \
         ../../source/guiGraphLib/lcd_lib_font.c \
         ../../source/guiGraphLib/lcd_lib_graph.c \
@@ -43,7 +44,8 @@ SOURCES += main.cpp\
         ../../source/guiGraphLib/lcd_font_h12.c \
         ../../source/guiGraphLib/lcd_font_h10_bold.c \
         ../../source/guiGraphLib/lcd_font_h10.c \
-        ../../source/guiGraphLib/lcd_font_6x8_mono.c
+        ../../source/guiGraphLib/lcd_font_6x8_mono.c \
+    ../../source/guiGraphics/guiGraphCheckbox.c
 
 
 HEADERS  += mainwindow.h \
@@ -66,10 +68,12 @@ HEADERS  += mainwindow.h \
 	../../source/guiWidgets/guiCheckBox.h \
         ../../source/guiGraphics/guiGraphWidgets.h \
         ../../source/guiGraphics/guiGraphImages.h \
+        ../../source/guiGraphics/guiGraphPanel.h \
         ../../source/guiGraphLib/guiGraphLib.h \
         ../../source/guiGraphLib/lcd_lib.h \
         ../../source/guiGraphLib/lcd_lib_private.h \
-        ../../source/guiGraphLib/lcd_font_typedef.h
+        ../../source/guiGraphLib/lcd_font_typedef.h \
+    ../../source/guiGraphics/guiGraphCheckbox.h
 
 	
 

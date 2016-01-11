@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QMenuSim
 TEMPLATE = app
@@ -12,35 +13,39 @@ TEMPLATE = app
 INCLUDEPATH = ./
 INCLUDEPATH += ./gui_top/
 INCLUDEPATH += ../common/
-INCLUDEPATH += ../../source/guiWidgets_monochrome/
+INCLUDEPATH += ../../source/guiWidgets/
+INCLUDEPATH += ../../source/guiWidgets/
 INCLUDEPATH += ../../source/guiCore/
 INCLUDEPATH += ../../source/utils/
-INCLUDEPATH += ../../source/guiGraphics_monochrome/
+INCLUDEPATH += ../../source/guiGraphics/
+INCLUDEPATH += ../../source/guiGraphLib/
 
 SOURCES += main.cpp\
 		mainwindow.cpp \
     ../common/pixeldisplay.cpp \
-	../../source/guiGraphics_monochrome/font_6x8_mono.c \
-    ../../source/guiGraphics_monochrome/font_h32.c \
-    ../../source/guiGraphics_monochrome/font_h10.c \
-    ../../source/guiGraphics_monochrome/font_h10_bold.c \
-	../../source/guiGraphics_monochrome/widget_images.c \
-    ../../source/guiGraphics_monochrome/guiGraphHAL.c \
-    ../../source/guiGraphics_monochrome/guiGraphPrimitives.c \
-    ../../source/guiGraphics_monochrome/guiGraphWidgets.c \
     ../../source/guiCore/guiCore.c \
-	../../source/guiWidgets_monochrome/guiPanel.c \
-    ../../source/guiWidgets_monochrome/guiCheckBox.c \
-	../../source/guiWidgets_monochrome/guiTextLabel.c \
 	gui_top/guiTop.c \
-    gui_top/guiMainPanel.c \
-    ../../source/guiGraphics_monochrome/font_h11.c \
-    ../../source/guiWidgets_monochrome/guiSpinBox.c \
     ../../source/utils/utils.c \
-    ../../source/guiGraphics_monochrome/font_h16.c \
     ../common/keydriver.cpp \
-    ../../source/guiGraphics_monochrome/other_images.c \
-    ../../source/guiWidgets_monochrome/guiStringList.c
+    ../../source/guiWidgets/guiPanel.c \
+    ../../source/guiWidgets/guiTextLabel.c \
+    ../../source/guiCore/guiCoreMemory.c \
+    ../../source/guiCore/guiCoreTimers.c \
+    ../../source/guiGraphics/guiGraphImages.c \
+    ../../source/guiGraphics/guiGraphWidgets.c \
+    gui_top/guiMainForm.c \
+    ../../source/guiGraphics/guiGraphPanel.c \
+    ../../source/guiGraphLib/lcd_font_6x8_mono.c \
+    ../../source/guiGraphLib/lcd_font_h10.c \
+    ../../source/guiGraphLib/lcd_font_h10_bold.c \
+    ../../source/guiGraphLib/lcd_font_h12.c \
+    ../../source/guiGraphLib/lcd_font_h32.c \
+    ../../source/guiGraphLib/lcd_lib.c \
+    ../../source/guiGraphLib/lcd_lib_font.c \
+    ../../source/guiGraphLib/lcd_lib_graph.c \
+    ../../source/guiGraphLib/portable/lcd_lib_graph_3310.c \
+    ../../source/guiWidgets/guiCheckBox.c \
+    ../../source/guiGraphics/guiGraphCheckbox.c
 	
 
 HEADERS  += mainwindow.h \
@@ -53,16 +58,23 @@ HEADERS  += mainwindow.h \
 	../../source/guiCore/guiEvents.h \
     ../../source/guiCore/guiCore.h \
 	../../source/guiCore/guiWidgets.h \
-	../../source/guiWidgets_monochrome/guiPanel.h \
-	../../source/guiWidgets_monochrome/guiTextLabel.h \
-	../../source/guiWidgets_monochrome/guiCheckBox.h \
     gui_top/guiConfig.h \
 	gui_top/guiTop.h \
-    gui_top/guiMainPanel.h \
-    ../../source/guiWidgets_monochrome/guiSpinBox.h \
     ../../source/utils/utils.h \
     ../common/keydriver.h \
-    ../../source/guiWidgets_monochrome/guiStringList.h
+    ../../source/guiGraphics/guiGraphImages.h \
+    ../../source/guiGraphics/guiGraphWidgets.h \
+    gui_top/lcd_lib_config.h \
+    gui_top/guiMainForm.h \
+    ../../source/guiWidgets/guiPanel.h \
+    ../../source/guiWidgets/guiTextLabel.h \
+    ../../source/guiGraphics/guiGraphPanel.h \
+    ../../source/guiGraphLib/guiGraphLib.h \
+    ../../source/guiGraphLib/lcd_font_typedef.h \
+    ../../source/guiGraphLib/lcd_lib.h \
+    ../../source/guiGraphLib/lcd_lib_private.h \
+    ../../source/guiWidgets/guiCheckBox.h \
+    ../../source/guiGraphics/guiGraphCheckbox.h
     
     
 	

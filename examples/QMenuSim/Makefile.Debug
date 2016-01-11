@@ -60,6 +60,7 @@ SOURCES       = main.cpp \
 		..\..\source\guiWidgets\guiCheckBox.c \
 		..\..\source\guiGraphics\guiGraphWidgets.c \
 		..\..\source\guiGraphics\guiGraphImages.c \
+		..\..\source\guiGraphics\guiGraphPanel.c \
 		..\..\source\guiGraphLib\lcd_lib.c \
 		..\..\source\guiGraphLib\lcd_lib_font.c \
 		..\..\source\guiGraphLib\lcd_lib_graph.c \
@@ -67,7 +68,8 @@ SOURCES       = main.cpp \
 		..\..\source\guiGraphLib\lcd_font_h12.c \
 		..\..\source\guiGraphLib\lcd_font_h10_bold.c \
 		..\..\source\guiGraphLib\lcd_font_h10.c \
-		..\..\source\guiGraphLib\lcd_font_6x8_mono.c debug\moc_mainwindow.cpp \
+		..\..\source\guiGraphLib\lcd_font_6x8_mono.c \
+		..\..\source\guiGraphics\guiGraphCheckbox.c debug\moc_mainwindow.cpp \
 		debug\moc_pixeldisplay.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
@@ -86,6 +88,7 @@ OBJECTS       = debug/main.o \
 		debug/guiCheckBox.o \
 		debug/guiGraphWidgets.o \
 		debug/guiGraphImages.o \
+		debug/guiGraphPanel.o \
 		debug/lcd_lib.o \
 		debug/lcd_lib_font.o \
 		debug/lcd_lib_graph.o \
@@ -94,6 +97,7 @@ OBJECTS       = debug/main.o \
 		debug/lcd_font_h10_bold.o \
 		debug/lcd_font_h10.o \
 		debug/lcd_font_6x8_mono.o \
+		debug/guiGraphCheckbox.o \
 		debug/moc_mainwindow.o \
 		debug/moc_pixeldisplay.o
 
@@ -117,10 +121,12 @@ DIST          =  mainwindow.h \
 		..\..\source\guiWidgets\guiCheckBox.h \
 		..\..\source\guiGraphics\guiGraphWidgets.h \
 		..\..\source\guiGraphics\guiGraphImages.h \
+		..\..\source\guiGraphics\guiGraphPanel.h \
 		..\..\source\guiGraphLib\guiGraphLib.h \
 		..\..\source\guiGraphLib\lcd_lib.h \
 		..\..\source\guiGraphLib\lcd_lib_private.h \
-		..\..\source\guiGraphLib\lcd_font_typedef.h main.cpp \
+		..\..\source\guiGraphLib\lcd_font_typedef.h \
+		..\..\source\guiGraphics\guiGraphCheckbox.h main.cpp \
 		mainwindow.cpp \
 		gui_top\guiTop.c \
 		gui_top\guiMainForm.c \
@@ -137,6 +143,7 @@ DIST          =  mainwindow.h \
 		..\..\source\guiWidgets\guiCheckBox.c \
 		..\..\source\guiGraphics\guiGraphWidgets.c \
 		..\..\source\guiGraphics\guiGraphImages.c \
+		..\..\source\guiGraphics\guiGraphPanel.c \
 		..\..\source\guiGraphLib\lcd_lib.c \
 		..\..\source\guiGraphLib\lcd_lib_font.c \
 		..\..\source\guiGraphLib\lcd_lib_graph.c \
@@ -144,7 +151,8 @@ DIST          =  mainwindow.h \
 		..\..\source\guiGraphLib\lcd_font_h12.c \
 		..\..\source\guiGraphLib\lcd_font_h10_bold.c \
 		..\..\source\guiGraphLib\lcd_font_h10.c \
-		..\..\source\guiGraphLib\lcd_font_6x8_mono.c
+		..\..\source\guiGraphLib\lcd_font_6x8_mono.c \
+		..\..\source\guiGraphics\guiGraphCheckbox.c
 QMAKE_TARGET  = QMenuSim
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = QMenuSim.exe
@@ -183,7 +191,7 @@ dist:
 	$(ZIP) QMenuSim.zip $(SOURCES) $(DIST) QMenuSim.pro C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\spec_pre.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\qdevice.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\device_config.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\qconfig.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcollision.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcollision_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquickrenderer.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquickrenderer_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3drenderer.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_3drenderer_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_declarative.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_declarative_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_enginio.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_enginio_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_platformsupport_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webkit.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webkit_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webkitwidgets.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\qt_functions.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\qt_config.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\win32\qt_config.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\spec_post.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\default_pre.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\resolve_config.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\default_post.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\build_pass.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\precompile_header.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\warn_on.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\qt.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\resources.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\moc.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\uic.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\win32\windows.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\exceptions.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\yacc.prf C:\Qt\Qt5.5.1\5.5\mingw492_32\mkspecs\features\lex.prf QMenuSim.pro C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/qtmaind.prl C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/Qt5Widgetsd.prl C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/Qt5Guid.prl C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/Qt5Cored.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\guiTop.o debug\guiMainForm.o debug\guiPanel1.o debug\guiPanel2.o debug\pixeldisplay.o debug\guiCore.o debug\guiCoreTimers.o debug\guiCoreMemory.o debug\guiButton.o debug\guiRadioButton.o debug\guiPanel.o debug\guiTextLabel.o debug\guiCheckBox.o debug\guiGraphWidgets.o debug\guiGraphImages.o debug\lcd_lib.o debug\lcd_lib_font.o debug\lcd_lib_graph.o debug\lcd_font_h32.o debug\lcd_font_h12.o debug\lcd_font_h10_bold.o debug\lcd_font_h10.o debug\lcd_font_6x8_mono.o debug\moc_mainwindow.o debug\moc_pixeldisplay.o
+	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\guiTop.o debug\guiMainForm.o debug\guiPanel1.o debug\guiPanel2.o debug\pixeldisplay.o debug\guiCore.o debug\guiCoreTimers.o debug\guiCoreMemory.o debug\guiButton.o debug\guiRadioButton.o debug\guiPanel.o debug\guiTextLabel.o debug\guiCheckBox.o debug\guiGraphWidgets.o debug\guiGraphImages.o debug\guiGraphPanel.o debug\lcd_lib.o debug\lcd_lib_font.o debug\lcd_lib_graph.o debug\lcd_font_h32.o debug\lcd_font_h12.o debug\lcd_font_h10_bold.o debug\lcd_font_h10.o debug\lcd_font_6x8_mono.o debug\guiGraphCheckbox.o debug\moc_mainwindow.o debug\moc_pixeldisplay.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -308,7 +316,7 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/QMainW
 		C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui/qicon.h \
 		mainwindow.h
-	C:\Qt\Qt5.5.1\5.5\mingw492_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.5.1/5.5/mingw492_32/mkspecs/win32-g++ -IE:/gdocs/emgui/examples/QMenuSim -IE:/gdocs/emgui/examples/QMenuSim -IE:/gdocs/emgui/examples/QMenuSim/gui_top -IE:/gdocs/emgui/examples/common -IE:/gdocs/emgui/source/guiWidgets -IE:/gdocs/emgui/source/guiCore -IE:/gdocs/emgui/source/guiGraphics -IE:/gdocs/emgui/source/guiGraphLib -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtANGLE -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\Qt5.5.1\5.5\mingw492_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.5.1/5.5/mingw492_32/mkspecs/win32-g++ -ID:/Avega/emgui/examples/QMenuSim -ID:/Avega/emgui/examples/QMenuSim -ID:/Avega/emgui/examples/QMenuSim/gui_top -ID:/Avega/emgui/examples/common -ID:/Avega/emgui/source/guiWidgets -ID:/Avega/emgui/source/guiCore -ID:/Avega/emgui/source/guiGraphics -ID:/Avega/emgui/source/guiGraphLib -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtANGLE -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_pixeldisplay.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/qwidget.h \
@@ -415,7 +423,7 @@ debug/moc_pixeldisplay.cpp: C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/QWid
 		C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/QFrame \
 		C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets/qframe.h \
 		../common/pixeldisplay.h
-	C:\Qt\Qt5.5.1\5.5\mingw492_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.5.1/5.5/mingw492_32/mkspecs/win32-g++ -IE:/gdocs/emgui/examples/QMenuSim -IE:/gdocs/emgui/examples/QMenuSim -IE:/gdocs/emgui/examples/QMenuSim/gui_top -IE:/gdocs/emgui/examples/common -IE:/gdocs/emgui/source/guiWidgets -IE:/gdocs/emgui/source/guiCore -IE:/gdocs/emgui/source/guiGraphics -IE:/gdocs/emgui/source/guiGraphLib -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtANGLE -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtCore ..\common\pixeldisplay.h -o debug\moc_pixeldisplay.cpp
+	C:\Qt\Qt5.5.1\5.5\mingw492_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.5.1/5.5/mingw492_32/mkspecs/win32-g++ -ID:/Avega/emgui/examples/QMenuSim -ID:/Avega/emgui/examples/QMenuSim -ID:/Avega/emgui/examples/QMenuSim/gui_top -ID:/Avega/emgui/examples/common -ID:/Avega/emgui/source/guiWidgets -ID:/Avega/emgui/source/guiCore -ID:/Avega/emgui/source/guiGraphics -ID:/Avega/emgui/source/guiGraphLib -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtWidgets -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtANGLE -IC:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtCore ..\common\pixeldisplay.h -o debug\moc_pixeldisplay.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -852,6 +860,7 @@ debug/guiTop.o: gui_top/guiTop.c gui_top/guiTop.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
 		gui_top/lcd_lib_config.h \
 		../../source/guiGraphics/guiGraphWidgets.h \
+		gui_top/guiConfig.h \
 		../../source/guiCore/guiWidgets.h \
 		../../source/guiCore/guiEvents.h \
 		../../source/guiWidgets/guiButton.h \
@@ -860,7 +869,6 @@ debug/guiTop.o: gui_top/guiTop.c gui_top/guiTop.h \
 		../../source/guiWidgets/guiCheckBox.h \
 		../../source/guiWidgets/guiRadioButton.h \
 		../../source/guiCore/guiCore.h \
-		gui_top/guiConfig.h \
 		../../source/guiCore/guiCoreTimers.h \
 		gui_top/guiMainForm.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiTop.o gui_top\guiTop.c
@@ -891,6 +899,7 @@ debug/guiPanel1.o: gui_top/guiPanel1.c ../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
 		gui_top/lcd_lib_config.h \
 		../../source/guiGraphics/guiGraphWidgets.h \
+		gui_top/guiConfig.h \
 		../../source/guiCore/guiWidgets.h \
 		../../source/guiCore/guiEvents.h \
 		../../source/guiWidgets/guiButton.h \
@@ -898,8 +907,7 @@ debug/guiPanel1.o: gui_top/guiPanel1.c ../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
 		../../source/guiWidgets/guiRadioButton.h \
-		../../source/guiCore/guiCore.h \
-		gui_top/guiConfig.h
+		../../source/guiCore/guiCore.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiPanel1.o gui_top\guiPanel1.c
 
 debug/guiPanel2.o: gui_top/guiPanel2.c ../../source/guiGraphLib/guiGraphLib.h \
@@ -907,6 +915,7 @@ debug/guiPanel2.o: gui_top/guiPanel2.c ../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
 		gui_top/lcd_lib_config.h \
 		../../source/guiGraphics/guiGraphWidgets.h \
+		gui_top/guiConfig.h \
 		../../source/guiCore/guiWidgets.h \
 		../../source/guiCore/guiEvents.h \
 		../../source/guiWidgets/guiButton.h \
@@ -914,8 +923,7 @@ debug/guiPanel2.o: gui_top/guiPanel2.c ../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
 		../../source/guiWidgets/guiRadioButton.h \
-		../../source/guiCore/guiCore.h \
-		gui_top/guiConfig.h
+		../../source/guiCore/guiCore.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiPanel2.o gui_top\guiPanel2.c
 
 debug/pixeldisplay.o: ../common/pixeldisplay.cpp C:/Qt/Qt5.5.1/5.5/mingw492_32/include/QtGui/qpainter.h \
@@ -1141,7 +1149,8 @@ debug/guiCheckBox.o: ../../source/guiWidgets/guiCheckBox.c ../../source/guiCore/
 		../../source/guiWidgets/guiRadioButton.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiCheckBox.o ..\..\source\guiWidgets\guiCheckBox.c
 
-debug/guiGraphWidgets.o: ../../source/guiGraphics/guiGraphWidgets.c ../../source/guiGraphics/guiGraphWidgets.h \
+debug/guiGraphWidgets.o: ../../source/guiGraphics/guiGraphWidgets.c gui_top/guiConfig.h \
+		../../source/guiGraphics/guiGraphWidgets.h \
 		../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiGraphLib/lcd_lib.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
@@ -1158,6 +1167,21 @@ debug/guiGraphWidgets.o: ../../source/guiGraphics/guiGraphWidgets.c ../../source
 
 debug/guiGraphImages.o: ../../source/guiGraphics/guiGraphImages.c 
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiGraphImages.o ..\..\source\guiGraphics\guiGraphImages.c
+
+debug/guiGraphPanel.o: ../../source/guiGraphics/guiGraphPanel.c ../../source/guiGraphics/guiGraphWidgets.h \
+		gui_top/guiConfig.h \
+		../../source/guiGraphLib/guiGraphLib.h \
+		../../source/guiGraphLib/lcd_lib.h \
+		../../source/guiGraphLib/lcd_font_typedef.h \
+		gui_top/lcd_lib_config.h \
+		../../source/guiCore/guiWidgets.h \
+		../../source/guiCore/guiEvents.h \
+		../../source/guiWidgets/guiButton.h \
+		../../source/guiWidgets/guiPanel.h \
+		../../source/guiWidgets/guiTextLabel.h \
+		../../source/guiWidgets/guiCheckBox.h \
+		../../source/guiWidgets/guiRadioButton.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiGraphPanel.o ..\..\source\guiGraphics\guiGraphPanel.c
 
 debug/lcd_lib.o: ../../source/guiGraphLib/lcd_lib.c ../../source/guiGraphLib/lcd_lib.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
@@ -1191,6 +1215,22 @@ debug/lcd_font_h10.o: ../../source/guiGraphLib/lcd_font_h10.c ../../source/guiGr
 
 debug/lcd_font_6x8_mono.o: ../../source/guiGraphLib/lcd_font_6x8_mono.c ../../source/guiGraphLib/lcd_font_typedef.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\lcd_font_6x8_mono.o ..\..\source\guiGraphLib\lcd_font_6x8_mono.c
+
+debug/guiGraphCheckbox.o: ../../source/guiGraphics/guiGraphCheckbox.c ../../source/guiGraphics/guiGraphWidgets.h \
+		gui_top/guiConfig.h \
+		../../source/guiGraphLib/guiGraphLib.h \
+		../../source/guiGraphLib/lcd_lib.h \
+		../../source/guiGraphLib/lcd_font_typedef.h \
+		gui_top/lcd_lib_config.h \
+		../../source/guiCore/guiWidgets.h \
+		../../source/guiCore/guiEvents.h \
+		../../source/guiWidgets/guiButton.h \
+		../../source/guiWidgets/guiPanel.h \
+		../../source/guiWidgets/guiTextLabel.h \
+		../../source/guiWidgets/guiCheckBox.h \
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphCheckbox.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiGraphCheckbox.o ..\..\source\guiGraphics\guiGraphCheckbox.c
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
