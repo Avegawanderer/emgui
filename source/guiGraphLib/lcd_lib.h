@@ -30,6 +30,7 @@ typedef struct {
     uint8_t mode;
 } lcd_pen_t;
 
+
 /*------- Obsolete --------//
 // Pixel output modes
 #define PIXEL_MODE_REWRITE  0x00
