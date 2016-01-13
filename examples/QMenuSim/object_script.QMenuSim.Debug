@@ -15,8 +15,11 @@ INPUT(
 ./debug\guiTextLabel.o
 ./debug\guiCheckBox.o
 ./debug\guiGraphWidgets.o
-./debug\guiGraphImages.o
 ./debug\guiGraphPanel.o
+./debug\guiGraphCheckbox.o
+./debug\guiGraphTextLabel.o
+./debug\guiGraphButton.o
+./debug\guiGraphRadioButton.o
 ./debug\lcd_lib.o
 ./debug\lcd_lib_font.o
 ./debug\lcd_lib_graph.o
@@ -25,7 +28,6 @@ INPUT(
 ./debug\lcd_font_h10_bold.o
 ./debug\lcd_font_h10.o
 ./debug\lcd_font_6x8_mono.o
-./debug\guiGraphCheckbox.o
 ./debug\moc_mainwindow.o
 ./debug\moc_pixeldisplay.o
 );

@@ -12,6 +12,7 @@
 #include "guiCore.h"
 #include "guiWidgets.h"
 #include "guiGraphWidgets.h"
+#include "guiGraphCheckbox.h"
 #include "guiCheckBox.h"
 
 

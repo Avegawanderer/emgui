@@ -13,6 +13,7 @@
 #include "guiWidgets.h"
 #include "guiTextLabel.h"
 #include "guiGraphWidgets.h"
+#include "guiGraphTextLabel.h"
 
 
 

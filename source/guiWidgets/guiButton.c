@@ -10,6 +10,7 @@
 #include "guiCore.h"
 #include "guiEvents.h"
 #include "guiGraphWidgets.h"
+#include "guiGraphButton.h"
 #include "guiButton.h"
 
 

@@ -30,6 +30,25 @@ typedef struct {
     uint8_t mode;
 } lcd_pen_t;
 
+/*------- Obsolete --------//
+// Pixel output modes
+#define PIXEL_MODE_REWRITE  0x00
+#define PIXEL_MODE_AND      0x01
+#define PIXEL_MODE_OR       0x02
+#define PIXEL_MODE_XOR      0x03
+
+// Image output modes
+#define IMAGE_MODE_NORMAL    0x01
+#define IMAGE_MODE_INVERSE   0x00
+
+// Aliases for fill rect
+#define FILL_WITH_BLACK      0x01
+#define FILL_WITH_WHITE      0x00
+
+#define LCD_FillRect(x_pos, y_pos, width, height, mode) \
+    LCD_DrawImage(0, x_pos, y_pos, width, height, mode)
+//-------------------------*/
+
 // Pen modes. If a pen is transparent, no pixels will be output with that pen.
 #define PEN_TRANSPARENT 0
 #define PEN_SOLID       1

@@ -13,6 +13,7 @@
 
 #include "guiGraphLib.h"
 #include "guiGraphWidgets.h"
+#include "guiGraphPanel.h"
 
 #include "guiCore.h"
 #include "guiCoreTimers.h"

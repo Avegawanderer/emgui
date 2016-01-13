@@ -9,8 +9,9 @@
 #include "guiEvents.h"
 #include "guiCore.h"
 #include "guiWidgets.h"
-#include "guiRadioButton.h"
 #include "guiGraphWidgets.h"
+#include "guiRadioButton.h"
+#include "guiGraphRadioButton.h"
 
 
 

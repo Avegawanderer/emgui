@@ -31,7 +31,6 @@ SOURCES += main.cpp\
     ../../source/guiWidgets/guiTextLabel.c \
     ../../source/guiCore/guiCoreMemory.c \
     ../../source/guiCore/guiCoreTimers.c \
-    ../../source/guiGraphics/guiGraphImages.c \
     ../../source/guiGraphics/guiGraphWidgets.c \
     gui_top/guiMainForm.c \
     ../../source/guiGraphics/guiGraphPanel.c \
@@ -45,7 +44,10 @@ SOURCES += main.cpp\
     ../../source/guiGraphLib/lcd_lib_graph.c \
     ../../source/guiGraphLib/portable/lcd_lib_graph_3310.c \
     ../../source/guiWidgets/guiCheckBox.c \
-    ../../source/guiGraphics/guiGraphCheckbox.c
+    ../../source/guiGraphics/guiGraphCheckbox.c \
+    ../../source/guiGraphics/guiGraphTextLabel.c \
+    ../../source/guiWidgets/guiRadioButton.c \
+    ../../source/guiGraphics/guiGraphRadioButton.c
 	
 
 HEADERS  += mainwindow.h \
@@ -62,7 +64,6 @@ HEADERS  += mainwindow.h \
 	gui_top/guiTop.h \
     ../../source/utils/utils.h \
     ../common/keydriver.h \
-    ../../source/guiGraphics/guiGraphImages.h \
     ../../source/guiGraphics/guiGraphWidgets.h \
     gui_top/lcd_lib_config.h \
     gui_top/guiMainForm.h \
@@ -74,7 +75,10 @@ HEADERS  += mainwindow.h \
     ../../source/guiGraphLib/lcd_lib.h \
     ../../source/guiGraphLib/lcd_lib_private.h \
     ../../source/guiWidgets/guiCheckBox.h \
-    ../../source/guiGraphics/guiGraphCheckbox.h
+    ../../source/guiGraphics/guiGraphCheckbox.h \
+    ../../source/guiGraphics/guiGraphTextLabel.h \
+    ../../source/guiWidgets/guiRadioButton.h \
+    ../../source/guiGraphics/guiGraphRadioButton.h
     
     
 	

@@ -13,6 +13,7 @@
 #include "guiCore.h"
 #include "guiWidgets.h"
 #include "guiGraphWidgets.h"
+#include "guiGraphPanel.h"
 #include "guiPanel.h"
 
 

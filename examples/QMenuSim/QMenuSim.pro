@@ -35,8 +35,11 @@ SOURCES += main.cpp\
 	../../source/guiWidgets/guiTextLabel.c \
 	../../source/guiWidgets/guiCheckBox.c \
         ../../source/guiGraphics/guiGraphWidgets.c \
-        ../../source/guiGraphics/guiGraphImages.c \
         ../../source/guiGraphics/guiGraphPanel.c \
+        ../../source/guiGraphics/guiGraphCheckbox.c \
+        ../../source/guiGraphics/guiGraphTextLabel.c \
+        ../../source/guiGraphics/guiGraphButton.c \
+        ../../source/guiGraphics/guiGraphRadioButton.c \
         ../../source/guiGraphLib/lcd_lib.c \
         ../../source/guiGraphLib/lcd_lib_font.c \
         ../../source/guiGraphLib/lcd_lib_graph.c \
@@ -44,8 +47,8 @@ SOURCES += main.cpp\
         ../../source/guiGraphLib/lcd_font_h12.c \
         ../../source/guiGraphLib/lcd_font_h10_bold.c \
         ../../source/guiGraphLib/lcd_font_h10.c \
-        ../../source/guiGraphLib/lcd_font_6x8_mono.c \
-    ../../source/guiGraphics/guiGraphCheckbox.c
+        ../../source/guiGraphLib/lcd_font_6x8_mono.c
+
 
 
 HEADERS  += mainwindow.h \
@@ -67,13 +70,15 @@ HEADERS  += mainwindow.h \
 	../../source/guiWidgets/guiTextLabel.h \
 	../../source/guiWidgets/guiCheckBox.h \
         ../../source/guiGraphics/guiGraphWidgets.h \
-        ../../source/guiGraphics/guiGraphImages.h \
         ../../source/guiGraphics/guiGraphPanel.h \
+        ../../source/guiGraphics/guiGraphCheckbox.h \
+        ../../source/guiGraphics/guiGraphTextLabel.h \
+        ../../source/guiGraphics/guiGraphButton.h \
+        ../../source/guiGraphics/guiGraphRadioButton.h \
         ../../source/guiGraphLib/guiGraphLib.h \
         ../../source/guiGraphLib/lcd_lib.h \
         ../../source/guiGraphLib/lcd_lib_private.h \
-        ../../source/guiGraphLib/lcd_font_typedef.h \
-    ../../source/guiGraphics/guiGraphCheckbox.h
+        ../../source/guiGraphLib/lcd_font_typedef.h
 
 	
 
