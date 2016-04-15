@@ -66,7 +66,7 @@ const uint8_t checkbox_9x9_empty_no_frame[] =
 
 void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox)
 {
-    int8_t y_aligned;
+    int16_t y_aligned;
     rect_t rect1;
     const uint8_t *img;
 
@@ -166,7 +166,7 @@ void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox)
 //-------------------------------------------------------//
 void guiGraph_DrawCheckBox(guiCheckBox_t * checkBox)
 {
-    int8_t y_aligned;
+    int16_t y_aligned;
     rect_t rect;
     const uint8_t *img;
 
