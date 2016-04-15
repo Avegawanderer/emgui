@@ -105,8 +105,8 @@ void guiGraph_DrawRadioButton(guiRadioButton_t *button)
 //-------------------------------------------------------//
 void guiGraph_DrawRadioButton(guiRadioButton_t *button)
 {
-    int8_t y_aligned;
-    int8_t x_aligned;
+    int16_t y_aligned;
+    int16_t x_aligned;
     rect_t rect1;
 
     rect1.x1 = wx;

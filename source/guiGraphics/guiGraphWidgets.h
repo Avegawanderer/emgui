@@ -32,7 +32,7 @@ enum ColorPaletteIndicies {
 };
 
 extern const color_t colorPalette1[];
-color_t *colorPalette;
+extern color_t *colorPalette;
 
 #endif //emGUI_COLORED
 
