@@ -894,6 +894,7 @@ debug/guiMainForm.o: gui_top/guiMainForm.c gui_top/guiConfig.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
 		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphPanel.h \
 		../../source/guiCore/guiCore.h \
 		../../source/guiCore/guiCoreTimers.h \
 		../../source/guiCore/guiCoreMemory.h \
@@ -1090,23 +1091,25 @@ debug/guiButton.o: ../../source/guiWidgets/guiButton.c ../../source/guiCore/guiW
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
-		../../source/guiWidgets/guiRadioButton.h
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphButton.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiButton.o ..\..\source\guiWidgets\guiButton.c
 
 debug/guiRadioButton.o: ../../source/guiWidgets/guiRadioButton.c ../../source/guiCore/guiEvents.h \
 		../../source/guiCore/guiCore.h \
 		gui_top/guiConfig.h \
 		../../source/guiCore/guiWidgets.h \
-		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphWidgets.h \
 		../../source/guiGraphLib/guiGraphLib.h \
 		../../source/guiGraphLib/lcd_lib.h \
 		../../source/guiGraphLib/lcd_font_typedef.h \
 		gui_top/lcd_lib_config.h \
-		../../source/guiGraphics/guiGraphWidgets.h \
 		../../source/guiWidgets/guiButton.h \
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiTextLabel.h \
-		../../source/guiWidgets/guiCheckBox.h
+		../../source/guiWidgets/guiCheckBox.h \
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphRadioButton.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiRadioButton.o ..\..\source\guiWidgets\guiRadioButton.c
 
 debug/guiPanel.o: ../../source/guiWidgets/guiPanel.c gui_top/guiConfig.h \
@@ -1122,7 +1125,8 @@ debug/guiPanel.o: ../../source/guiWidgets/guiPanel.c gui_top/guiConfig.h \
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
-		../../source/guiWidgets/guiRadioButton.h
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphPanel.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiPanel.o ..\..\source\guiWidgets\guiPanel.c
 
 debug/guiTextLabel.o: ../../source/guiWidgets/guiTextLabel.c ../../source/guiCore/guiEvents.h \
@@ -1138,7 +1142,8 @@ debug/guiTextLabel.o: ../../source/guiWidgets/guiTextLabel.c ../../source/guiCor
 		../../source/guiWidgets/guiButton.h \
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiCheckBox.h \
-		../../source/guiWidgets/guiRadioButton.h
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphTextLabel.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiTextLabel.o ..\..\source\guiWidgets\guiTextLabel.c
 
 debug/guiCheckBox.o: ../../source/guiWidgets/guiCheckBox.c ../../source/guiCore/guiEvents.h \
@@ -1154,7 +1159,8 @@ debug/guiCheckBox.o: ../../source/guiWidgets/guiCheckBox.c ../../source/guiCore/
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
-		../../source/guiWidgets/guiRadioButton.h
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphCheckbox.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiCheckBox.o ..\..\source\guiWidgets\guiCheckBox.c
 
 debug/guiGraphWidgets.o: ../../source/guiGraphics/guiGraphWidgets.c gui_top/guiConfig.h \
@@ -1184,7 +1190,8 @@ debug/guiGraphPanel.o: ../../source/guiGraphics/guiGraphPanel.c ../../source/gui
 		../../source/guiWidgets/guiPanel.h \
 		../../source/guiWidgets/guiTextLabel.h \
 		../../source/guiWidgets/guiCheckBox.h \
-		../../source/guiWidgets/guiRadioButton.h
+		../../source/guiWidgets/guiRadioButton.h \
+		../../source/guiGraphics/guiGraphPanel.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\guiGraphPanel.o ..\..\source\guiGraphics\guiGraphPanel.c
 
 debug/guiGraphCheckbox.o: ../../source/guiGraphics/guiGraphCheckbox.c ../../source/guiGraphics/guiGraphWidgets.h \

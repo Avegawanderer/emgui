@@ -162,9 +162,9 @@ void PixelDisplay::updateFrom_RGB_888_32bit(uint32_t *buffer)
         for (bitmap_x = 0; bitmap_x < image.width(); bitmap_x++)
         {
             temp = buffer[bufferIndex++];
-            red = temp & 0xFF;
+            blue = temp & 0xFF;
             green = (temp >> 8) & 0xFF;
-            blue = (temp >> 16) & 0xFF;
+            red = (temp >> 16) & 0xFF;
             image.setPixel(bitmap_x,bitmap_y, qRgb( red,green,blue ));
         }
     }
